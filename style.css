@@ -246,6 +246,120 @@ h1, h2, h3, h4, h5, h6 {
     stroke: #000000;
 }
 
+.moviecategory {
+    padding: 60px 56px;
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.moviecategory h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.cardcontainer {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+}
+
+.cardcontainer::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cardcontainer::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.cardcontainer::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.moviecard {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 20px;
+    min-width: 300px;
+    height: 400px;
+    flex-shrink: 0;
+}
+
+.moviecard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.moviecard img {
+    width: 350px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.moviecard .text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+}
+
+.moviecard h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 8px 0;
+    color: #ffffff;
+}
+
+.moviecard p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #cccccc;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.footer {
+    background-color: #000000;
+    padding: 40px 56px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-align: center;
+}
+
+.footer-content {
+    margin-bottom: 20px;
+}
+
+
+
+.footer div:last-child {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #888888;
+}
+
 .hamburger-menu {
     display: none;
     cursor: pointer;
@@ -355,4 +469,42 @@ h1, h2, h3, h4, h5, h6 {
         width: 18px;
         height: 18px;
     }
+    
+    .moviecategory {
+        padding: 40px 20px;
+    }
+    
+    .moviecategory h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .cardcontainer {
+        gap: 15px;
+    }
+    
+    .moviecard {
+        min-width: 250px;
+        height: 350px;
+        margin-bottom: 15px;
+    }
+    
+    .moviecard .text-overlay {
+        padding: 15px;
+    }
+    
+    .moviecard h2 {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+    
+    .moviecard p {
+        font-size: 13px;
+    }
+    
+    .footer {
+        padding: 30px 20px;
+    }
+    
+   
 }
