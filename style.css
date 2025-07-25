@@ -211,7 +211,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-navigation {
-    position: fixed;
+    position: absolute;
     bottom: 30px;
     right: 30px;
     display: flex;
@@ -244,4 +244,115 @@ h1, h2, h3, h4, h5, h6 {
     height: 20px;
     color: #000000;
     stroke: #000000;
+}
+
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.hamburger-icon {
+    width: 24px;
+    height: 24px;
+    stroke: #ffffff;
+}
+
+.search-icon {
+    display: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.search-icon-svg {
+    width: 24px;
+    height: 24px;
+    stroke: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 16px 20px;
+        background-color: rgba(43, 43, 58, 0.4);
+        border-radius: 30px;
+        margin: 20px;
+        width: calc(100% - 40px);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .left {
+        gap: 20px;
+    }
+    
+    .hamburger-menu {
+        display: block;
+    }
+    
+    .menu {
+        display: none;
+    }
+    
+    .logo h3 {
+        font-size: 24px;
+    }
+    
+    .search {
+        display: none;
+    }
+    
+    .search-icon {
+        display: block;
+    }
+    
+    .right {
+        gap: 15px;
+    }
+    
+    .profile {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .hero {
+        padding: 100px 20px 40px 20px;
+    }
+    
+    .hero-content {
+        max-width: 90%;
+    }
+    
+    .hero-content h1 {
+        font-size: 36px;
+        margin-bottom: 15px;
+    }
+    
+    .hero-content p {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+    
+    .hero-content button {
+        padding: 10px 20px;
+        font-size: 14px;
+        margin: 5px;
+    }
+    
+    .hero-navigation {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+    
+    .nav-arrow {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .arrow-icon {
+        width: 18px;
+        height: 18px;
+    }
 }
