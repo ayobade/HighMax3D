@@ -1,4 +1,4 @@
-<img width="1870" height="1051" alt="hero image1" src="https://github.com/user-attachments/assets/1b1df5f9-defa-403b-b2bc-6f1020d057b7" />
+![App Preview](./Assets/readme-image.png)
 
 ﻿HighMax3D
 

@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -20,6 +21,7 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
 
 .navbar {
     display: flex;
@@ -72,6 +74,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
     font-size: 14px;
 }
+
 
 .search {
     display: flex;
@@ -127,6 +130,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #000000;
     stroke: #000000;
 }
+
 
 .profile {
     width: 40px;
@@ -215,10 +219,11 @@ h1, h2, h3, h4, h5, h6 {
     stroke: #ffffff;
 }
 
+
 .hero {
     position: relative;
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     padding: 120px 56px 60px 56px;
     background-color: #000000;
     text-align: center;
@@ -291,8 +296,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-navigation {
     position: absolute;
-    top: 63vh;
-    right: 20px;
+    bottom: 30px;
+    right: 30px;
     display: flex;
     gap: 15px;
     z-index: 1;
@@ -325,10 +330,12 @@ h1, h2, h3, h4, h5, h6 {
     stroke: #000000;
 }
 
+
 .moviecategory {
     padding: 60px 56px;
     background-color: #000000;
     scroll-margin-top: 100px;
+    position: relative;
 }
 
 .moviecategory h1 {
@@ -343,21 +350,15 @@ h1, h2, h3, h4, h5, h6 {
     overflow-x: auto;
     padding-bottom: 10px;
     scroll-behavior: smooth;
+    position: relative;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .cardcontainer::-webkit-scrollbar {
-    height: 8px;
+    display: none;
 }
 
-.cardcontainer::-webkit-scrollbar-track {
-    background: #ffffff1a;
-    border-radius: 4px;
-}
-
-.cardcontainer::-webkit-scrollbar-thumb {
-    background: #ffffff4d;
-    border-radius: 4px;
-}
 
 .moviecard {
     position: relative;
@@ -395,6 +396,19 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px;
 }
 
+.moviecard h2 {
+    font-size: 20px;
+    margin: 0 0 8px 0;
+    color: #ffffff;
+}
+
+.moviecard p {
+    font-size: 14px;
+    color: #cccccc;
+    margin: 0;
+    line-height: 1.4;
+}
+
 .add-to-list-btn {
     position: absolute;
     top: 15px;
@@ -419,14 +433,6 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 12px #0000004d;
 }
 
-.add-icon,
-.remove-icon {
-    width: 24px;
-    height: 24px;
-    color: #000000;
-    stroke: #000000;
-}
-
 .add-to-list-btn.remove {
     background: #fd1010;
 }
@@ -435,40 +441,58 @@ h1, h2, h3, h4, h5, h6 {
     background: #fd1010;
 }
 
-.moviecard h2 {
-    font-size: 20px;
-    margin: 0 0 8px 0;
-    color: #ffffff;
+.add-icon,
+.remove-icon {
+    width: 24px;
+    height: 24px;
+    color: #000000;
+    stroke: #000000;
 }
 
-.moviecard p {
-    font-size: 14px;
-    color: #cccccc;
-    margin: 0;
-    line-height: 1.4;
+
+.container-nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px #0000004d;
+    z-index: 10;
 }
 
-.footer {
-    background-color: #000000;
-    padding: 40px 56px;
-    border-top: 1px solid #ffffff1a;
-    text-align: center;
+.container-nav-arrow:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 15px #00000066;
 }
 
-.footer-content {
-    margin-bottom: 20px;
+.container-nav-arrow.left {
+    left: 10px;
 }
 
-.footer div:last-child {
-    font-size: 14px;
-    color: #888888;
+.container-nav-arrow.right {
+    right: 10px;
 }
 
-.footer-logo h1 {
-    font-size: 32px;
-    color: #ffffff;
-    margin: 0;
+.container-nav-arrow.visible {
+    display: flex;
 }
+
+.container-nav-arrow .arrow-icon {
+    width: 20px;
+    height: 20px;
+    color: #000000;
+    stroke: #000000;
+}
+
 
 .hamburger-menu {
     display: none;
@@ -616,7 +640,67 @@ h1, h2, h3, h4, h5, h6 {
     color: #cccccc;
 }
 
-/* Movie Modal Styles */
+
+.search-results-dropdown {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    background: #2b2b3a66;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid #ffffff1a;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px #00000033;
+    z-index: 1001;
+    padding: 10px 0;
+    max-height: 350px;
+    overflow-y: auto;
+    display: none;
+}
+
+.search-results-dropdown.active {
+    display: block;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search-result-item:hover {
+    background: #ffffff1a;
+}
+
+.search-result-thumb {
+    width: 40px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #222;
+}
+
+.search-result-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-result-title {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+.search-result-genre {
+    font-size: 13px;
+    color: #cccccc;
+}
+
+
 .movie-modal {
     position: fixed;
     top: 0;
@@ -812,65 +896,29 @@ h1, h2, h3, h4, h5, h6 {
     stroke: currentColor;
 }
 
-/* Search Results Dropdown */
-.search-results-dropdown {
-    position: absolute;
-    top: 55px;
-    left: 0;
-    width: 100%;
-    background: #2b2b3a66;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid #ffffff1a;
-    border-radius: 18px;
-    box-shadow: 0 8px 24px #00000033;
-    z-index: 1001;
-    padding: 10px 0;
-    max-height: 350px;
-    overflow-y: auto;
-    display: none;
+
+.footer {
+    background-color: #000000;
+    padding: 40px 56px;
+    border-top: 1px solid #ffffff1a;
+    text-align: center;
 }
 
-.search-results-dropdown.active {
-    display: block;
+.footer-content {
+    margin-bottom: 20px;
 }
 
-.search-result-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 10px 24px;
-    cursor: pointer;
-    transition: background 0.2s;
+.footer div:last-child {
+    font-size: 14px;
+    color: #888888;
 }
 
-.search-result-item:hover {
-    background: #ffffff1a;
+.footer-logo h1 {
+    font-size: 32px;
+    color: #ffffff;
+    margin: 0;
 }
 
-.search-result-thumb {
-    width: 40px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
-    background: #222;
-}
-
-.search-result-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.search-result-title {
-    font-size: 18px;
-    color: #fff;
-    margin-bottom: 2px;
-}
-
-.search-result-genre {
-    font-size: 13px;
-    color: #cccccc;
-}
 
 @media (max-width: 1040px) {
     .navbar {
@@ -938,80 +986,9 @@ h1, h2, h3, h4, h5, h6 {
     .menu ul li a:hover {
         background-color: #ffffff1a;
     }
-
-
 }
 
-
-
-/* Mobile Responsive */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 16px 20px;
-        background-color: #2b2b3a66;
-        border-radius: 30px;
-        margin: 20px;
-        width: calc(100% - 40px);
-        backdrop-filter: blur(25px);
-        -webkit-backdrop-filter: blur(25px);
-        border: 1px solid #ffffff1a;
-    }
-    
-    .left {
-        gap: 20px;
-    }
-    
-    .hamburger-menu {
-        display: block;
-    }
-    
-    .menu {
-        display: none;
-        position: fixed;
-        top: 100px;
-        left: 20px;
-        right: 20px;
-        background-color: #2b2b3a66;
-        backdrop-filter: blur(25px);
-        -webkit-backdrop-filter: blur(25px);
-        border: 1px solid #ffffff1a;
-        border-radius: 20px;
-        padding: 20px;
-        z-index: 1000;
-        opacity: 0;
-        transform: translateY(-20px);
-        transition: all 0.3s ease;
-    }
-    
-    .menu.mobile-menu-open {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    .menu ul {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-    }
-    
-    .menu ul li {
-        margin-right: 0;
-        width: 100%;
-    }
-    
-    .menu ul li a {
-        display: block;
-        padding: 12px 16px;
-        border-radius: 10px;
-        transition: background-color 0.3s ease;
-        font-size: 16px;
-    }
-    
-    .menu ul li a:hover {
-        background-color: #ffffff1a;
-    }
-    
     .logo h3 {
         font-size: 24px;
     }
@@ -1152,6 +1129,10 @@ h1, h2, h3, h4, h5, h6 {
     .add-icon {
         width: 20px;
         height: 20px;
+    }
+    
+    .container-nav-arrow {
+        display: none !important;
     }
     
     .footer {

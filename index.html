@@ -10,25 +10,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+   
     <div class="navbar">
-       <div class="left">
-        <div class="hamburger-menu">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hamburger-icon">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
+        <div class="left">
+            <div class="hamburger-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hamburger-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </div>
+            <div class="logo">
+                <h3>HighMax3D</h3>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#tv-shows">Tv Shows</a></li>
+                    <li><a href="#movies">Movies</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="logo">
-            <h3>HighMax3D</h3>
-        </div>
-        <div class="menu">
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#tv-shows">Tv Shows</a></li>
-                <li><a href="#movies">Movies</a></li>
-            </ul>
-        </div>
-       </div>
-      <div class="right">
+        <div class="right">
             <div class="search">
                 <input type="text" placeholder="Search movies or tv shows">
                 <button class="search-btn">
@@ -62,7 +63,7 @@
         </div>
     </div>
 
-    <!-- Mobile Search Overlay -->
+ 
     <div class="mobile-search-overlay">
         <div class="mobile-search-container">
             <input type="text" placeholder="Search movies or tv shows" class="mobile-search-input">
@@ -75,22 +76,23 @@
         <div class="mobile-search-results"></div>
     </div>
 
+  
     <div class="hero" id="hero">
-
         <div>
             <img src="./Assets/hero image1.png" alt="hero">
         </div>
-
         <div class="hero-content">
             <p>Animation, Comedy, Family</p>
             <h1>Garfield: The Movie</h1>
             <p>The lazy, lasagna-loving cat is back in a wild new adventure and this time, the couch won't save him.</p>
-            <button class="play-button" id="hero-watch-btn"><span class="play-icon">▶</span> Watch Now</button>
+            <button class="play-button" id="hero-watch-btn">
+                <span class="play-icon">▶</span> Watch Now
+            </button>
             <button class="hero-add-btn" id="hero-add-btn">Add to List</button>
         </div>
-        
     </div>
 
+  
     <div class="hero-navigation">
         <button class="nav-arrow left-arrow">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow-icon">
@@ -104,371 +106,125 @@
         </button>
     </div>
 
-<div class="moviecategory" id="my-list">
-    <h1>My List</h1>
-    <div class="cardcontainer">
-        <!-- Movie cards will be dynamically added here -->
-    </div>
-</div>
-
-    
-    
-<div class="moviecategory" id="trending">
-    <h1>Trending</h1>
-    <div class="cardcontainer">
-        <div class="moviecard">
-            <img src="./Assets/image 1.png" alt="movie1">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 1</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
+   
+    <div class="moviecategory" id="my-list">
+        <h1>My List</h1>
+        <div class="cardcontainer">
+          
         </div>
-        <div class="moviecard">
-            <img src="./Assets/image 2.png" alt="movie2">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 2</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 3.png" alt="movie3">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 3</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 4.png" alt="movie4">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 4</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 5.png" alt="movie5">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 5</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 6.png" alt="movie6">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 6</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 7.png" alt="movie7">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 7</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 8.png" alt="movie8">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 8</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-    </div>
-    
-</div>
-
-<div class="moviecategory" id="movies">
-    <h1>Movies</h1>
-    <div class="cardcontainer">
-        <div class="moviecard">
-            <img src="./Assets/image 1.png" alt="movie1">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 1</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 2.png" alt="movie2">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 2</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 3.png" alt="movie3">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 3</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 4.png" alt="movie4">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 4</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 5.png" alt="movie5">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 5</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 6.png" alt="movie6">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 6</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 7.png" alt="movie7">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 7</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 8.png" alt="movie8">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Movie 8</h2>
-                <p class= "Animation, Comedy, Family">Animation, Comedy, Family</p>
-            </div>
-        </div>
-    </div>
-    
-</div>
-
-<div class="moviecategory" id="tv-shows">
-    <h1>Tv Shows</h1>
-    <div class="cardcontainer">
-        <div class="moviecard">
-            <img src="./Assets/image 1.png" alt="show1">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Show 1</h2>
-                <p class= "moviegenre">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 2.png" alt="show2">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Show 2</h2>
-                <p class= "moviegenre">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 3.png" alt="show3">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Show 3</h2>
-                <p class= "moviegenre">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 4.png" alt="show4">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Show 4</h2>
-                <p class= "moviegenre">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 5.png" alt="show5">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Show 5</h2>
-                <p class= "moviegenre">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 6.png" alt="show6">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Show 6</h2>
-                <p class= "moviegenre">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 7.png" alt="show7">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Show 7</h2>
-                <p class= "moviegenre">Animation, Comedy, Family</p>
-            </div>
-        </div>
-        <div class="moviecard">
-            <img src="./Assets/image 8.png" alt="show8">
-            <button class="add-to-list-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-            <div class="text-overlay">
-                <h2>Show 8</h2>
-                <p class= "moviegenre">Animation, Comedy, Family</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Movie Modal -->
-<div class="movie-modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-content">
-        <button class="modal-close-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="modal-close-icon">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        <button class="container-nav-arrow left">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
             </svg>
         </button>
-        <div class="modal-body">
-            <div class="modal-poster">
-                <img src="" alt="" class="modal-poster-img">
-            </div>
-            <div class="modal-info">
-                <h2 class="modal-title"></h2>
-                <div class="modal-meta">
-                    <span class="modal-year"></span>
-                    <span class="modal-genre"></span>
-                    <span class="modal-rating"></span>
-                </div>
-                <p class="modal-plot"></p>
-                <div class="modal-buttons">
-                    <button class="modal-watch-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="watch-icon">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />
-                        </svg>
-                        Watch Now
-                    </button>
-                    <button class="modal-add-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                        Add to List
-                    </button>
-                </div>
-            </div>
-        </div>
+        <button class="container-nav-arrow right">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+            </svg>
+        </button>
     </div>
-</div>
 
-<div class="footer">
-    <div class="footer-content">
-        <div class="footer-logo">
-            <h1>HighMax3D</h1>
+    <div class="moviecategory" id="trending">
+        <h1>Trending</h1>
+        <div class="cardcontainer">
+          
+        </div>
+        <button class="container-nav-arrow left">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+            </svg>
+        </button>
+        <button class="container-nav-arrow right">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="moviecategory" id="movies">
+        <h1>Movies</h1>
+        <div class="cardcontainer">
+          
+        </div>
+        <button class="container-nav-arrow left">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+            </svg>
+        </button>
+        <button class="container-nav-arrow right">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="moviecategory" id="tv-shows">
+        <h1>Tv Shows</h1>
+        <div class="cardcontainer">
+           
+        </div>
+        <button class="container-nav-arrow left">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+            </svg>
+        </button>
+        <button class="container-nav-arrow right">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+            </svg>
+        </button>
+    </div>
+
+  
+    <div class="movie-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="modal-close-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="modal-body">
+                <div class="modal-poster">
+                    <img src="" alt="" class="modal-poster-img">
+                </div>
+                <div class="modal-info">
+                    <h2 class="modal-title"></h2>
+                    <div class="modal-meta">
+                        <span class="modal-year"></span>
+                        <span class="modal-genre"></span>
+                        <span class="modal-rating"></span>
+                    </div>
+                    <p class="modal-plot"></p>
+                    <div class="modal-buttons">
+                        <button class="modal-watch-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="watch-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />
+                            </svg>
+                            Watch Now
+                        </button>
+                        <button class="modal-add-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                            Add to List
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div >All rights reserved</div>
-</div>
-<script src="main.js"></script>
+
+   
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h1>HighMax3D</h1>
+            </div>
+        </div>
+        <div>All rights reserved</div>
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>

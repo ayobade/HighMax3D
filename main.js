@@ -1,7 +1,5 @@
-// API Configuration
 const OMDB_API_KEY = '48e2fe9e';
 
-// Movie Class
 class Movie {
     constructor(data) {
         this.title = data.Title || data.title || 'Unknown';
@@ -22,7 +20,6 @@ class Movie {
     }
 }
 
-// API Service Class
 class MovieAPIService {
     static async fetchMovieByTitle(title) {
         try {
@@ -77,7 +74,6 @@ class MovieAPIService {
     }
 }
 
-// My List Manager Class
 class MyListManager {
     constructor() {
         this.myList = JSON.parse(localStorage.getItem('myList')) || [];
@@ -126,25 +122,39 @@ class MyListManager {
         const container = document.querySelector('#my-list .cardcontainer');
         if (!container) return;
 
+        container.innerHTML = '';
+
         if (this.myList.length === 0) {
-            container.innerHTML = '<p style="color: #888; text-align: center; padding: 40px;">No movies in your list. Movies you add will appear here.</p>';
-            return;
+            const emptyMessage = document.createElement('p');
+            emptyMessage.style.cssText = 'color: #888; text-align: center; padding: 40px;';
+            emptyMessage.textContent = 'No movies in your list. Movies you add will appear here.';
+            container.appendChild(emptyMessage);
+        } else {
+            this.myList.forEach(movie => {
+                const movieCard = document.createElement('div');
+                movieCard.className = 'moviecard';
+                movieCard.setAttribute('data-imdb-id', movie.imdbID);
+                
+                movieCard.innerHTML = `
+                    <img src="${movie.poster}" alt="${movie.title}">
+                    <button class="add-to-list-btn remove">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="remove-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                        </svg>
+                    </button>
+                    <div class="text-overlay">
+                        <h2>${movie.title}</h2>
+                        <p>${movie.displayGenre}</p>
+                    </div>
+                `;
+                
+                container.appendChild(movieCard);
+            });
         }
 
-        container.innerHTML = this.myList.map(movie => `
-            <div class="moviecard" data-imdb-id="${movie.imdbID}">
-                <img src="${movie.poster}" alt="${movie.title}">
-                <button class="add-to-list-btn remove">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="remove-icon">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
-                    </svg>
-                </button>
-                <div class="text-overlay">
-                    <h2>${movie.title}</h2>
-                    <p>${movie.displayGenre}</p>
-                </div>
-            </div>
-        `).join('');
+        if (containerNavManager) {
+            setTimeout(() => containerNavManager.refresh(), 100);
+        }
     }
 
     updateAllAddButtons() {
@@ -173,7 +183,6 @@ class MyListManager {
         
         this.updateModalButton();
         
-        // Update hero button if heroManager exists
         if (heroManager) {
             heroManager.updateHeroAddButton();
         }
@@ -248,7 +257,6 @@ class MyListManager {
     }
 }
 
-// Modal Manager Class
 class ModalManager {
     constructor() {
         this.modal = document.querySelector('.movie-modal');
@@ -260,7 +268,6 @@ class ModalManager {
     async openModal(movie, imdbID = null) {
         if (!this.modal) return;
 
-        // Fetch detailed data if we have an IMDB ID
         if (imdbID) {
             const detailedMovie = await MovieAPIService.fetchMovieDetails(imdbID);
             if (detailedMovie) {
@@ -375,7 +382,6 @@ class ModalManager {
     }
 }
 
-// Search Manager Class
 class SearchManager {
     constructor() {
         this.searchInput = document.querySelector('.search input');
@@ -489,7 +495,6 @@ class SearchManager {
     }
 }
 
-// UI Manager Class
 class UIManager {
     constructor() {
         this.setupMobileMenu();
@@ -626,24 +631,35 @@ class UIManager {
         const section = document.querySelector(`#${sectionId} .cardcontainer`);
         if (!section) return;
 
-        const cards = section.querySelectorAll('.moviecard');
-        cards.forEach((card, i) => {
-            if (movies[i]) {
-                const movie = movies[i];
-                const img = card.querySelector('img');
-                const title = card.querySelector('h2');
-                const genre = card.querySelector('p');
+        section.innerHTML = '';
 
-                if (img) img.src = movie.poster;
-                if (title) title.textContent = movie.title;
-                if (genre) genre.textContent = movie.displayGenre;
-                card.setAttribute('data-imdb-id', movie.imdbID);
-            }
+        movies.forEach(movie => {
+            const movieCard = document.createElement('div');
+            movieCard.className = 'moviecard';
+            movieCard.setAttribute('data-imdb-id', movie.imdbID);
+            
+            movieCard.innerHTML = `
+                <img src="${movie.poster}" alt="${movie.title}">
+                <button class="add-to-list-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                </button>
+                <div class="text-overlay">
+                    <h2>${movie.title}</h2>
+                    <p>${movie.displayGenre}</p>
+                </div>
+            `;
+            
+            section.appendChild(movieCard);
         });
+
+        if (containerNavManager) {
+            setTimeout(() => containerNavManager.refresh(), 100);
+        }
     }
 }
 
-// Hero Manager Class
 class HeroManager {
     constructor() {
         this.heroWatchBtn = document.getElementById('hero-watch-btn');
@@ -679,7 +695,6 @@ class HeroManager {
     }
 
     setHeroMovies(movies) {
-        // Add Garfield as the first movie
         const garfieldMovie = new Movie({
             title: 'Garfield: The Movie',
             year: '2004',
@@ -689,7 +704,7 @@ class HeroManager {
             plot: 'The lazy, lasagna-loving cat is back in a wild new adventure and this time, the couch won\'t save him.'
         });
         
-        this.heroMovies = [garfieldMovie, ...movies.slice(0, 9)]; // Garfield + 9 API movies
+        this.heroMovies = [garfieldMovie, ...movies.slice(0, 9)];
         this.currentIndex = 0;
         this.updateHeroDisplay();
     }
@@ -714,7 +729,6 @@ class HeroManager {
         const currentMovie = this.heroMovies[this.currentIndex];
         this.heroMovie = currentMovie;
 
-        // Update hero content
         const heroContent = document.querySelector('.hero-content');
         if (heroContent) {
             const genreP = heroContent.querySelector('p:first-child');
@@ -726,14 +740,12 @@ class HeroManager {
             if (plotP) plotP.textContent = currentMovie.plot || '';
         }
 
-        // Update hero image
         const heroImage = document.querySelector('.hero img');
         if (heroImage) {
             heroImage.src = currentMovie.poster || './Assets/hero image1.png';
             heroImage.alt = currentMovie.title || 'hero';
         }
 
-        // Update add button state
         this.updateHeroAddButton();
     }
 
@@ -760,27 +772,124 @@ class HeroManager {
     }
 }
 
-// Global instances
-let myListManager, modalManager, searchManager, uiManager, heroManager;
+class ContainerNavigationManager {
+    constructor() {
+        this.containers = [];
+        this.init();
+    }
 
-// Initialize application
+    init() {
+        this.setupContainers();
+        this.setupEventListeners();
+        this.updateArrowVisibility();
+    }
+
+    setupContainers() {
+        const containerSelectors = ['#my-list', '#trending', '#movies', '#tv-shows'];
+        this.containers = containerSelectors.map(selector => {
+            const container = document.querySelector(selector);
+            if (container) {
+                const cardContainer = container.querySelector('.cardcontainer');
+                const leftArrow = container.querySelector('.container-nav-arrow.left');
+                const rightArrow = container.querySelector('.container-nav-arrow.right');
+                return { container, cardContainer, leftArrow, rightArrow };
+            }
+            return null;
+        }).filter(Boolean);
+    }
+
+    setupEventListeners() {
+        this.containers.forEach(({ leftArrow, rightArrow, cardContainer }) => {
+            if (leftArrow) {
+                leftArrow.addEventListener('click', () => {
+                    this.scrollContainer(cardContainer, 'left');
+                });
+            }
+            if (rightArrow) {
+                rightArrow.addEventListener('click', () => {
+                    this.scrollContainer(cardContainer, 'right');
+                });
+            }
+        });
+
+        this.containers.forEach(({ cardContainer }) => {
+            if (cardContainer) {
+                cardContainer.addEventListener('scroll', () => {
+                    this.updateArrowVisibility();
+                });
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            this.updateArrowVisibility();
+        });
+    }
+
+    scrollContainer(container, direction) {
+        const scrollAmount = 320;
+        const currentScroll = container.scrollLeft;
+        
+        if (direction === 'left') {
+            container.scrollTo({
+                left: currentScroll - scrollAmount,
+                behavior: 'smooth'
+            });
+        } else {
+            container.scrollTo({
+                left: currentScroll + scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    updateArrowVisibility() {
+        this.containers.forEach(({ cardContainer, leftArrow, rightArrow }) => {
+            if (!cardContainer) return;
+
+            const { scrollLeft, scrollWidth, clientWidth } = cardContainer;
+            const isScrollable = scrollWidth > clientWidth;
+            const isAtStart = scrollLeft <= 0;
+            const isAtEnd = scrollLeft >= scrollWidth - clientWidth - 1;
+
+            if (leftArrow) {
+                if (isScrollable && !isAtStart) {
+                    leftArrow.classList.add('visible');
+                } else {
+                    leftArrow.classList.remove('visible');
+                }
+            }
+
+            if (rightArrow) {
+                if (isScrollable && !isAtEnd) {
+                    rightArrow.classList.add('visible');
+                } else {
+                    rightArrow.classList.remove('visible');
+                }
+            }
+        });
+    }
+
+    refresh() {
+        this.setupContainers();
+        this.updateArrowVisibility();
+    }
+}
+
+let myListManager, modalManager, searchManager, uiManager, heroManager, containerNavManager;
+
 document.addEventListener('DOMContentLoaded', async () => {
-    
-    // Initialize managers in correct order
     modalManager = new ModalManager();
     searchManager = new SearchManager();
     uiManager = new UIManager();
     myListManager = new MyListManager();
     heroManager = new HeroManager();
+    containerNavManager = new ContainerNavigationManager();
 
-    // Clear any existing My List
     myListManager.clearMyList();
 
-    // Fetch and populate movie cards
     try {
         const popularMovies = await MovieAPIService.fetchPopularMovies();
         
-        // Set hero movies for navigation
         if (popularMovies.length > 0) {
             heroManager.setHeroMovies(popularMovies);
         }
@@ -793,7 +902,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error loading movies:', error);
     }
 
-    // Update button states
     myListManager.updateAllAddButtons();
     heroManager.updateHeroAddButton();
 });
