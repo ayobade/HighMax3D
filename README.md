@@ -1,4 +1,5 @@
-![App Preview](./Assets/readme-image.png)
+
+<img width="3806" height="1993" alt="Readme-image" src="https://github.com/user-attachments/assets/040b4bad-6a38-440d-9743-55c41732f15a" />
 
 ﻿HighMax3D
 
