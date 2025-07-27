@@ -648,6 +648,10 @@ class HeroManager {
     constructor() {
         this.heroWatchBtn = document.getElementById('hero-watch-btn');
         this.heroAddBtn = document.getElementById('hero-add-btn');
+        this.leftArrow = document.querySelector('.left-arrow');
+        this.rightArrow = document.querySelector('.right-arrow');
+        this.heroMovies = [];
+        this.currentIndex = 0;
         this.setupEventListeners();
     }
 
@@ -657,37 +661,97 @@ class HeroManager {
                 alert('Starting movie playback...');
             });
         }
-
         if (this.heroAddBtn) {
             this.heroAddBtn.addEventListener('click', () => {
                 this.handleHeroAddButton();
             });
         }
+        if (this.leftArrow) {
+            this.leftArrow.addEventListener('click', () => {
+                this.previousSlide();
+            });
+        }
+        if (this.rightArrow) {
+            this.rightArrow.addEventListener('click', () => {
+                this.nextSlide();
+            });
+        }
     }
 
-    handleHeroAddButton() {
-        const heroMovie = new Movie({
+    setHeroMovies(movies) {
+        // Add Garfield as the first movie
+        const garfieldMovie = new Movie({
             title: 'Garfield: The Movie',
             year: '2004',
             genre: 'Animation, Comedy, Family',
             poster: './Assets/hero image1.png',
-            imdbID: 'tt0356634', // Garfield's IMDB ID
+            imdbID: 'tt0356634',
             plot: 'The lazy, lasagna-loving cat is back in a wild new adventure and this time, the couch won\'t save him.'
         });
+        
+        this.heroMovies = [garfieldMovie, ...movies.slice(0, 9)]; // Garfield + 9 API movies
+        this.currentIndex = 0;
+        this.updateHeroDisplay();
+    }
 
-        if (myListManager && myListManager.isInMyList(heroMovie.imdbID)) {
-            myListManager.removeFromMyList(heroMovie.imdbID);
-            this.heroAddBtn.textContent = 'Add to List';
-        } else {
-            myListManager.addToMyList(heroMovie);
-            this.heroAddBtn.textContent = 'Remove from List';
+    previousSlide() {
+        if (this.heroMovies.length > 0) {
+            this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.heroMovies.length - 1;
+            this.updateHeroDisplay();
         }
     }
 
+    nextSlide() {
+        if (this.heroMovies.length > 0) {
+            this.currentIndex = this.currentIndex < this.heroMovies.length - 1 ? this.currentIndex + 1 : 0;
+            this.updateHeroDisplay();
+        }
+    }
+
+    updateHeroDisplay() {
+        if (this.heroMovies.length === 0 || !this.heroMovies[this.currentIndex]) return;
+
+        const currentMovie = this.heroMovies[this.currentIndex];
+        this.heroMovie = currentMovie;
+
+        // Update hero content
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+            const genreP = heroContent.querySelector('p:first-child');
+            const titleH1 = heroContent.querySelector('h1');
+            const plotP = heroContent.querySelector('p:last-of-type');
+            
+            if (genreP) genreP.textContent = currentMovie.displayGenre || currentMovie.genre || '';
+            if (titleH1) titleH1.textContent = currentMovie.title || '';
+            if (plotP) plotP.textContent = currentMovie.plot || '';
+        }
+
+        // Update hero image
+        const heroImage = document.querySelector('.hero img');
+        if (heroImage) {
+            heroImage.src = currentMovie.poster || './Assets/hero image1.png';
+            heroImage.alt = currentMovie.title || 'hero';
+        }
+
+        // Update add button state
+        this.updateHeroAddButton();
+    }
+
+    handleHeroAddButton() {
+        if (myListManager && this.heroMovie) {
+            if (myListManager.isInMyList(this.heroMovie.imdbID)) {
+                myListManager.removeFromMyList(this.heroMovie.imdbID);
+                this.heroAddBtn.textContent = 'Add to List';
+            } else {
+                myListManager.addToMyList(this.heroMovie);
+                this.heroAddBtn.textContent = 'Remove from List';
+            }
+        }
+    }
+    
     updateHeroAddButton() {
-        if (this.heroAddBtn && myListManager) {
-            const heroIMDBID = 'tt0356634'; // Garfield's IMDB ID
-            if (myListManager.isInMyList(heroIMDBID)) {
+        if (this.heroAddBtn && myListManager && this.heroMovie) {
+            if (myListManager.isInMyList(this.heroMovie.imdbID)) {
                 this.heroAddBtn.textContent = 'Remove from List';
             } else {
                 this.heroAddBtn.textContent = 'Add to List';
@@ -715,6 +779,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Fetch and populate movie cards
     try {
         const popularMovies = await MovieAPIService.fetchPopularMovies();
+        
+        // Set hero movies for navigation
+        if (popularMovies.length > 0) {
+            heroManager.setHeroMovies(popularMovies);
+        }
         
         uiManager.updateMovieCards(popularMovies.slice(0, 8), 'trending');
         uiManager.updateMovieCards(popularMovies.slice(8, 16), 'movies');
