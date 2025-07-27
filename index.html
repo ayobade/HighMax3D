@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HighMax</title>
+    <title>HighMax3D</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
             </svg>
         </div>
         <div class="logo">
-            <h3>HighMax</h3>
+            <h3>HighMax3D</h3>
         </div>
         <div class="menu">
             <ul>
@@ -36,6 +36,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                     </svg>
                 </button>
+                <div class="search-results-dropdown"></div>
             </div>
             <div class="search-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="search-icon-svg">
@@ -44,6 +45,19 @@
             </div>
             <div class="profile">
                 <img src="./Assets/profile.jpg" alt="profile">
+                <div class="profile-dropdown">
+                    <div class="profile-info">
+                        <h4>Ayo Bade</h4>
+                        <p>Ayobade@gmail.com</p>
+                    </div>
+                    <hr class="profile-divider">
+                    <button class="logout-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="logout-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+                        </svg>
+                        Logout
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -58,10 +72,11 @@
                 </svg>
             </button>
         </div>
+        <div class="mobile-search-results"></div>
     </div>
 
     <div class="hero" id="hero">
-       
+
         <div>
             <img src="./Assets/hero image1.png" alt="hero">
         </div>
@@ -69,9 +84,9 @@
         <div class="hero-content">
             <p>Animation, Comedy, Family</p>
             <h1>Garfield: The Movie</h1>
-            <p>The lazy, lasagna-loving cat is back in a wild new adventure and this time, the couch won’t save him.</p>
-            <button class="play-button"><span class="play-icon">▶</span> Play Now</button>
-            <button>Add to List</button>
+            <p>The lazy, lasagna-loving cat is back in a wild new adventure and this time, the couch won't save him.</p>
+            <button class="play-button" id="hero-watch-btn"><span class="play-icon">▶</span> Watch Now</button>
+            <button class="hero-add-btn" id="hero-add-btn">Add to List</button>
         </div>
         
     </div>
@@ -89,15 +104,16 @@
         </button>
     </div>
 
-<div class="moviecategory">
-<h1>My List</h1>
-<p>No movies in your list. Movies you add will appear here.</p>
-
+<div class="moviecategory" id="my-list">
+    <h1>My List</h1>
+    <div class="cardcontainer">
+        <!-- Movie cards will be dynamically added here -->
+    </div>
 </div>
 
     
     
-<div class="moviecategory">
+<div class="moviecategory" id="trending">
     <h1>Trending</h1>
     <div class="cardcontainer">
         <div class="moviecard">
@@ -405,16 +421,54 @@
     </div>
 </div>
 
+<!-- Movie Modal -->
+<div class="movie-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <button class="modal-close-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="modal-close-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <div class="modal-body">
+            <div class="modal-poster">
+                <img src="" alt="" class="modal-poster-img">
+            </div>
+            <div class="modal-info">
+                <h2 class="modal-title"></h2>
+                <div class="modal-meta">
+                    <span class="modal-year"></span>
+                    <span class="modal-genre"></span>
+                    <span class="modal-rating"></span>
+                </div>
+                <p class="modal-plot"></p>
+                <div class="modal-buttons">
+                    <button class="modal-watch-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="watch-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />
+                        </svg>
+                        Watch Now
+                    </button>
+                    <button class="modal-add-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="add-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        Add to List
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="footer">
     <div class="footer-content">
         <div class="footer-logo">
-            <h1>HighMax</h1>
+            <h1>HighMax3D</h1>
         </div>
     </div>
     <div >All rights reserved</div>
 </div>
-
 <script src="main.js"></script>
 </body>
 </html>
