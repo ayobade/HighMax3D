@@ -1,5 +1,3 @@
-![App Preview](./assets/readme image.png)
-
 
 
 ﻿HighMax3D
