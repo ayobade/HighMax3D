@@ -736,12 +736,31 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 800px;
     width: 100%;
     max-height: 90vh;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     box-shadow: 0 20px 60px #00000066;
     border: 1px solid #ffffff1a;
     transform: scale(0.9);
     opacity: 0;
     transition: all 0.3s ease;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #2a2a2a;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #555555;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #777777;
 }
 
 .movie-modal.active .modal-content {
@@ -783,7 +802,7 @@ h1, h2, h3, h4, h5, h6 {
 .modal-body {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100%;
 }
 
 .modal-poster {
@@ -1146,6 +1165,8 @@ h1, h2, h3, h4, h5, h6 {
     .modal-content {
         max-height: 95vh;
         border-radius: 12px;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
     
     .modal-body {
